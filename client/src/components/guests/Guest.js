@@ -1,12 +1,13 @@
 import React from 'react'
 
-const Guest = () => {
+const Guest = ({guest}) => {
+    const {name, phone, email, chow, drink, isConfirmed} = guest
     return (
         <div className="guest-card">
             <div className="card-head">
                 <div>
-                    <label>Confirmed 
-                        <i className="fas fa-check-square">
+                    <label className={`${isConfirmed && 'confirm'}`}>Confirmed 
+                        <i className={`fas fa-check-square ${isConfirmed && 'confirm'}`}>
                             <input type="checkbox" />
                         </i>
                     </label>
@@ -21,11 +22,12 @@ const Guest = () => {
                 </div>
             </div>
             <div className="card-body">
-                <h2>John Doe</h2>
-                <span className="badge red">Small Chops</span>
+                <h2>{name}</h2>
+                <span className={'badge ' + (chow === 'Small-Chops' ? 'red' : chow === 'Continental' ? 'green' : 'seaGreen')}>{chow}</span>
+                
                 <div className="contact">
                     <i className="fas fa-phone-alt"/>
-                    <p>09012345678</p>
+                    <p>{phone}</p>
                 </div>
             </div>
         </div>
